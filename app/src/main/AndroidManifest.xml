@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--  DECLARAMOS LOS PERMISOS PARA ACCEDEDR A INTERNET , DATOS DE CELULAR , GPS Y ALMACENAMIENTO-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.optic.serenazgo">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name="com.optic.serenazgo.activities.client.HistoryBookingDetailClientActivity" />
+        <activity
+            android:name="com.optic.serenazgo.activities.client.HistoryBookingClientActivity"
+            android:parentActivityName="com.optic.serenazgo.activities.client.MapClientActivity" />
+        <activity
+            android:name="com.optic.serenazgo.activities.client.UpdateProfileActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.optic.serenazgo.activities.client.MapClientActivity" />
+        <activity android:name="com.optic.serenazgo.activities.client.SucessfullPatrolActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.optic.serenazgo.activities.client.RegisterActivity"
+            android:parentActivityName="com.optic.serenazgo.activities.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.optic.serenazgo.activities.client.MapClientBookingActivity"
+            android:screenOrientation="portrait"/>
+
+        <receiver
+            android:name="com.optic.serenazgo.receivers.AcceptReceiver"
+            android:enabled="true" />
+        <receiver
+            android:name="com.optic.serenazgo.receivers.CancelReceiver"
+            android:enabled="true" />
+
+        <service android:name="com.optic.serenazgo.services.MyFirebaseMessagingClient">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="com.optic.serenazgo.activities.client.RequestPatrolActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.optic.serenazgo.activities.client.DetailRequestActivity"
+            android:parentActivityName="com.optic.serenazgo.activities.client.MapClientActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.optic.serenazgo.activities.client.MapClientActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.optic.serenazgo.activities.LoginActivity"
+            android:theme="@style/splashScreenTheme"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- DECLARAMOS LA METADATA PARA EL USO DEL LA API DE GOOGLE MAPS -->
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+    </application>
+
+</manifest>
